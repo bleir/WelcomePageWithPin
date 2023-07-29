@@ -1,10 +1,10 @@
 import './App.css';
-import Keyboard from './components/Keyboard/Keyboard';
+import PinTable from './components/PinTable/PinTable';
 
 function App() {
 	return (
 		<div className='App'>
-			<Keyboard />
+			<PinTable />
 		</div>
 	);
 }
