@@ -5,7 +5,7 @@ You have to type valid PIN by numeric keyboard to go to the next page.<br />
 If PIN is invalid, application shows error. You can press Clear button to clear input field. <br />
 If PIN will be valid it will proceed to next page.<br /><br />
 
-![pintable](https://github.com/bleir/WelcomePageWithPin/assets/19537815/144d840d-49f9-463d-996f-1bc7e2a5f60b)
+![Zrzut ekranu 2023-07-30 o 16 03 56](https://github.com/bleir/WelcomePageWithPin/assets/19537815/577cece6-f056-4df6-9c0a-e80973186054)
 
 ### Run application
 
