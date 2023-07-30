@@ -1,17 +1,20 @@
 import { FC, useContext } from 'react';
-import { MyContext } from '../../MyContext';
+import { MyContext } from 'MyContext';
 import { KeyboardWrapper, Button } from './style';
 
-const Keyboard: FC = () => {
-	const { pin, setPin, setPinForUser } = useContext(MyContext);
+export const Keyboard: FC = () => {
+	const {
+		pin: { value, hashedValue },
+		setPin,
+	} = useContext(MyContext);
 
 	const handleButton = (e: any) => {
-		if (pin.length < 4) {
-			setPin((prevValue: any) => prevValue + e.target.textContent);
-			setPinForUser((prevValue: any) => {
-				const hashedPin = '•'.repeat(prevValue.length);
+		const restPin = e.target.textContent;
 
-				return hashedPin + e.target.textContent;
+		if (value.length < 4) {
+			setPin({
+				value: value + restPin,
+				hashedValue: '•'.repeat(hashedValue.length) + restPin,
 			});
 		}
 	};
@@ -34,5 +37,3 @@ const Keyboard: FC = () => {
 		</KeyboardWrapper>
 	);
 };
-
-export default Keyboard;

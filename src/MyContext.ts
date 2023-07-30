@@ -1,12 +1,10 @@
 import { createContext } from 'react';
-import { IMyContext } from './components/types';
+import { IMyContext, MessageType } from './types';
 
 export const MyContext = createContext<IMyContext>({
-	pin: '',
-	setPin: '',
-	pinForUser: '',
-	setPinForUser: null,
-	message: '',
-	setMessage: null,
+	pin: { value: '', hashedValue: '' },
+	setPin: () => {},
+	message: MessageType.DEFAULT,
+	setMessage: () => {},
 	inputRef: null,
 });

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledResetButton = styled.button`
+export const Button = styled.button`
 	border-radius: 6px;
 	background: #eb0000;
 	color: #fff;
