@@ -56,8 +56,6 @@ const PinTable = () => {
 					<GreenCheckmark
 						src='assets/green_checkmark.png'
 						alt='green checkmark'
-						width={150}
-						height={150}
 					/>
 					<Button onClick={handleReset}>Go to Homepage</Button>
 				</>
