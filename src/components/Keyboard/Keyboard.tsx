@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { MyContext } from 'MyContext';
 import { KeyboardWrapper, Button } from './style';
 
@@ -8,8 +8,11 @@ export const Keyboard: FC = () => {
 		setPin,
 	} = useContext(MyContext);
 
-	const handleButton = (e: any) => {
-		const restPin = e.target.textContent;
+	const handleButton = (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		const target = e.target as HTMLElement;
+		const restPin = target.textContent;
 
 		if (value.length < 4) {
 			setPin({
