@@ -1,5 +1,6 @@
+import { MessageType } from 'components/PinTable/types';
+
 export interface IMessage {
-	error: boolean;
-	info: boolean;
+	type: MessageType;
 	handleReset: () => void;
 }

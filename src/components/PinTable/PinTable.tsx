@@ -2,24 +2,25 @@ import { useState, useEffect, useRef } from 'react';
 import { Input } from 'components/Input';
 import { Keyboard } from 'components/Keyboard';
 import { Message } from 'components/Message';
-import { IPin } from './types';
+import { IPin, MessageType } from './types';
 import { Wrapper, Logo, GreenCheckmark, Title, Button } from './style';
 
 const PIN_CODE = 1234;
 
 const PinTable = () => {
 	const [pin, setPin] = useState<IPin>({ value: '', hashedValue: '' });
-	const [error, setError] = useState(false);
-	const [info, setInfo] = useState(false);
+	const [messageType, setMessageType] = useState<MessageType>(
+		MessageType.DEFAULT
+	);
 	const [nextPage, setNextPage] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleReset = () => {
 		if (pin.value !== '') {
 			setPin({ value: '', hashedValue: '' });
-			setInfo(false);
+			setMessageType(MessageType.DEFAULT);
 			setNextPage(false);
-			setError(false);
+
 			if (inputRef?.current !== null) {
 				inputRef?.current?.classList.remove('error');
 			}
@@ -29,12 +30,12 @@ const PinTable = () => {
 	useEffect(() => {
 		if (pin.value.length === 4) {
 			if (Number(pin.value) === PIN_CODE) {
-				setInfo(true);
+				setMessageType(MessageType.INFO);
 				setTimeout(() => {
 					setNextPage(true);
 				}, 3000);
 			} else {
-				setError(true);
+				setMessageType(MessageType.DEFAULT);
 				if (inputRef.current !== null) {
 					inputRef.current.classList.add('error');
 				}
@@ -65,11 +66,7 @@ const PinTable = () => {
 				<>
 					<Input pin={pin} inputRef={inputRef} />
 
-					<Message
-						error={error}
-						info={info}
-						handleReset={handleReset}
-					/>
+					<Message type={messageType} handleReset={handleReset} />
 
 					<Keyboard pin={pin} setPin={setPin} />
 				</>

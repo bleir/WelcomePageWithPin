@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { IMessage } from './types';
+import { MessageType } from 'components/PinTable/types';
 import { StyledMessage, StyledLink, Spinner, Error, Info } from './style';
 
-export const Message: FC<IMessage> = ({ handleReset, error, info }) => {
+export const Message: FC<IMessage> = ({ handleReset, type }) => {
 	const errorMessage = (
 		<>
 			PIN is invalid.{' '}
@@ -15,8 +16,9 @@ export const Message: FC<IMessage> = ({ handleReset, error, info }) => {
 
 	return (
 		<StyledMessage>
-			{error && <Error>{errorMessage}</Error>}
-			{info && (
+			{type === MessageType.ERROR ? (
+				<Error>{errorMessage}</Error>
+			) : (
 				<Info>
 					<Spinner />
 					<br />
