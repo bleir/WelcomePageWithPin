@@ -9,14 +9,14 @@ export const StyledInput = styled.input`
 	border-radius: 8px;
 	border: 1px solid #ccc;
 	width: 10rem;
+	transition: box-shadow 0.2s ease-out;
 
 	&:focus {
 		outline: none;
 	}
 
 	&.error {
-		background: #ffc1c1;
-		color: #eb0000;
 		border: 1px solid #eb0000;
+		box-shadow: 0 0 10px #e08282;
 	}
 `;

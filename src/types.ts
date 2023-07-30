@@ -1,16 +1,12 @@
 import { Dispatch, SetStateAction, RefObject } from 'react';
 import { IPin } from './components/PinTable/types';
 
-export enum MessageType {
-	DEFAULT = 'default',
-	VALID = 'valid',
-	INVALID = 'invalid',
-}
-
 export interface IMyContext {
 	pin: { value: string; hashedValue: string };
+	error: boolean;
+	setError: Dispatch<SetStateAction<boolean>>;
 	setPin: Dispatch<SetStateAction<IPin>>;
-	message: MessageType;
-	setMessage: Dispatch<SetStateAction<MessageType>>;
+	nextPage: boolean;
+	setNextPage: Dispatch<SetStateAction<boolean>>;
 	inputRef: RefObject<HTMLInputElement> | null;
 }
