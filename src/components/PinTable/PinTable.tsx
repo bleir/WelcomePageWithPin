@@ -22,7 +22,6 @@ const PinTable = () => {
 	const [info, setInfo] = useState(false);
 	const [nextPage, setNextPage] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const [counter, setCounter] = useState(60);
 
 	const handleReset = () => {
 		if (pin.value !== '') {
