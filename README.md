@@ -1,6 +1,11 @@
 # PIN App
 
-This is PIN application.
+This is Welcome Page application locked with PIN.<br /><br />
+You have to type valid PIN by numeric keyboard to go to the next page.<br />
+If PIN is invalid, application shows error. You can press Clear button to clear input field. <br />
+If PIN will be valid it will proceed to next page.<br /><br />
+
+![pintable](https://github.com/bleir/WelcomePageWithPin/assets/19537815/144d840d-49f9-463d-996f-1bc7e2a5f60b)
 
 ### Run application
 
