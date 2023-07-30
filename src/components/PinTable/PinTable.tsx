@@ -1,18 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { MyContext } from 'MyContext';
-import { Input } from '../Input/Input';
-import { Keyboard } from '../Keyboard';
+import { Input } from 'components/Input';
+import { Keyboard } from 'components/Keyboard';
+import { Message } from 'components/Message';
 import { IPin } from './types';
-import {
-	Wrapper,
-	Logo,
-	GreenCheckmark,
-	Title,
-	Message,
-	StyledLink,
-	Button,
-	Spinner,
-} from './style';
+import { Wrapper, Logo, GreenCheckmark, Title, Button } from './style';
 
 const PIN_CODE = 1234;
 
@@ -35,16 +26,6 @@ const PinTable = () => {
 		}
 	};
 
-	const errorMessage = (
-		<>
-			PIN is invalid.{' '}
-			<StyledLink href='#' onClick={handleReset}>
-				Clear field
-			</StyledLink>{' '}
-			and try again.
-		</>
-	);
-
 	useEffect(() => {
 		if (pin.value.length === 4) {
 			if (Number(pin.value) === PIN_CODE) {
@@ -62,56 +43,38 @@ const PinTable = () => {
 	}, [pin.value]);
 
 	return (
-		<MyContext.Provider
-			value={{
-				pin,
-				setPin,
-				error,
-				setError,
-				nextPage,
-				setNextPage,
-				inputRef,
-			}}
-		>
-			<Wrapper>
-				<Logo
-					src='assets/santander-logo.svg'
-					alt='Santander Consumer Bank'
-				/>
+		<Wrapper>
+			<Logo
+				src='assets/santander-logo.svg'
+				alt='Santander Consumer Bank'
+			/>
 
-				<Title>{nextPage ? 'Welcome' : 'Please Log in'}</Title>
+			<Title>{nextPage ? 'Welcome' : 'Please Log in'}</Title>
 
-				{nextPage ? (
-					<>
-						<GreenCheckmark
-							src='assets/green_checkmark.png'
-							alt='green checkmark'
-							width={150}
-							height={150}
-						/>
-						<Button onClick={handleReset}>Go to Homepage</Button>
-					</>
-				) : (
-					<>
-						<Input />
-						<Message>
-							{error && (
-								<span className='error'>{errorMessage}</span>
-							)}
-							{info && (
-								<span className='info'>
-									<Spinner />
-									<br />
-									PIN is correct. Redirecting to Welcome
-									Page...
-								</span>
-							)}
-						</Message>
-						<Keyboard />
-					</>
-				)}
-			</Wrapper>
-		</MyContext.Provider>
+			{nextPage ? (
+				<>
+					<GreenCheckmark
+						src='assets/green_checkmark.png'
+						alt='green checkmark'
+						width={150}
+						height={150}
+					/>
+					<Button onClick={handleReset}>Go to Homepage</Button>
+				</>
+			) : (
+				<>
+					<Input pin={pin} inputRef={inputRef} />
+
+					<Message
+						error={error}
+						info={info}
+						handleReset={handleReset}
+					/>
+
+					<Keyboard pin={pin} setPin={setPin} />
+				</>
+			)}
+		</Wrapper>
 	);
 };
 

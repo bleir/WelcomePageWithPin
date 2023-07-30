@@ -1,13 +1,9 @@
-import React, { FC, useContext } from 'react';
-import { MyContext } from 'MyContext';
+import React, { FC } from 'react';
+import { IKeyboard } from './types';
 import { KeyboardWrapper, Button } from './style';
 
-export const Keyboard: FC = () => {
-	const {
-		pin: { value, hashedValue },
-		setPin,
-	} = useContext(MyContext);
-
+export const Keyboard: FC<IKeyboard> = ({ pin, setPin }) => {
+	const { value, hashedValue } = pin;
 	const handleButton = (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
